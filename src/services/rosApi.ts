@@ -238,6 +238,24 @@ const jointStateTopic = new ROSLIB.Topic({
   messageType: 'sensor_msgs/msg/JointState',
 });
 
+const movelTrajectoryTopic = new ROSLIB.Topic({
+  ros,
+  name: '/trajectory/movel',
+  messageType: 'trajectory_msgs/msg/Pose',
+});
+
+const movejTrajectoryTopic = new ROSLIB.Topic({
+  ros,
+  name: '/trajectory/movej',
+  messageType: 'trajectory_msgs/msg/Pose',
+});
+
+const jointTrajectoryTopic = new ROSLIB.Topic({
+  ros,
+  name: '/trajectory/joint',
+  messageType: 'std_msgs/msg/Float32MultiArray',
+});
+
 export function publishPoseCommand(pose: Pose) {
   poseCommandTopic.publish(pose);
 }
@@ -254,11 +272,11 @@ export function subscribeToPose(callback: (pose: Pose) => void) {
   };
 }
 
-export function publishJointCommand(joints: number[]) {
-  jointCommandTopic.publish({
-    data: joints,
-  });
-}
+// export function publishJointCommand(joints: number[]) {
+//   jointCommandTopic.publish({
+//     data: joints,
+//   });
+// }
 
 export function subscribeToJointState(
   callback: (joints: number[]) => void
@@ -273,6 +291,20 @@ export function subscribeToJointState(
     jointStateTopic.unsubscribe(handler);
   };
 }
+
+export function publishMoveL(pose: Pose) {
+  movelTrajectoryTopic.publish(pose);
+}
+
+// export function publishMoveJ(pose: Pose) {
+//   movejTrajectoryTopic.publish(pose);
+// }
+
+// export function publishJointTrajectory(joints: number[]) {
+//   jointTrajectoryTopic.publish({
+//     data: joints,
+//   });
+// }
 
 export function publishToolDO(value: boolean) {
   const topic = new ROSLIB.Topic({

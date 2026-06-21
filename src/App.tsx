@@ -10,6 +10,9 @@ import {
   subscribeToPose,
   // publishJointCommand,
   subscribeToJointState,
+  publishMoveL,
+  // publishMoveJ,
+  // publishJointTrajectory,
   applyRelativeAxisAngleXYZRotation,
 } from './services/rosApi';
 
@@ -183,7 +186,7 @@ function App() {
 
     syncJointTargetWithStateRef.current = true;
     setActiveControlMode('cartesian');
-    publishPoseCommand(nextPose);
+    publishMoveL(nextPose);
 
     setMessage(
       `Comando cartesiano enviado. Rotación relativa: Rx=${rx}°, Ry=${ry}°, Rz=${rz}°.`
@@ -229,7 +232,7 @@ function App() {
   }
 
   setTargetPose(poseFromFk);
-  publishPoseCommand(poseFromFk);
+  publishMoveL(poseFromFk);
 
   setMessage(
     'Comando articular convertido mediante cinemática directa y enviado como pose cartesiana.'
@@ -241,7 +244,7 @@ function App() {
 
     setTargetPose(referencePose);
 
-    publishPoseCommand(referencePose);
+    publishMoveL(referencePose);
 
     setRx(0);
     setRy(0);
@@ -265,7 +268,7 @@ function returnToReferenceJoints() {
   };
 
   setTargetPose(poseFromJoints);
-  publishPoseCommand(poseFromJoints);
+  publishMoveL(poseFromJoints);
 
   setRx(0);
   setRy(0);
@@ -391,7 +394,7 @@ function moveToHome() {
   setRy(0);
   setRz(0);
 
-  publishPoseCommand(homePose);
+  publishMoveL(homePose);
 
   setMessage(
     'Volviendo a Home: [0°, 0°, 0°, 0°, 30°, 0°].'
