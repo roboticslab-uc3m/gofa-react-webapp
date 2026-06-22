@@ -242,13 +242,13 @@ const jointStateTopic = new ROSLIB.Topic({
 const movelTrajectoryTopic = new ROSLIB.Topic({
   ros,
   name: '/trajectory/movel',
-  messageType: 'trajectory_msgs/msg/Pose',
+  messageType: 'geometry_msgs/msg/Pose',
 });
 
 const movejTrajectoryTopic = new ROSLIB.Topic({
   ros,
   name: '/trajectory/movej',
-  messageType: 'trajectory_msgs/msg/Pose',
+  messageType: 'geometry_msgs/msg/Pose',
 });
 
 const jointTrajectoryTopic = new ROSLIB.Topic({
