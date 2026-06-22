@@ -15,7 +15,7 @@ export function computeForwardKinematics(jointsRad: number[]) {
   for (let i = 0; i < gofaDhParams.length; i++) {
     const dh = gofaDhParams[i];
 
-    const thetaDeg = THREE.MathUtils.radToDeg(jointsRad[i])+ dh.thetaOffsetDeg;
+    const thetaDeg = THREE.MathUtils.radToDeg(jointsRad[i]) + dh.thetaOffsetDeg;
 
     const jointTransform = dhToMatrix(
       thetaDeg,
@@ -23,8 +23,8 @@ export function computeForwardKinematics(jointsRad: number[]) {
       dh.a,
       dh.alphaDeg
     );
-    transform.multiply(jointTransform);
 
+    transform.multiply(jointTransform);
   }
 
   const tcpPosition = new THREE.Vector3();
@@ -34,11 +34,11 @@ export function computeForwardKinematics(jointsRad: number[]) {
   tcpQuaternion.setFromRotationMatrix(transform);
 
   if (tcpQuaternion.w < 0) {
-  tcpQuaternion.x *= -1;
-  tcpQuaternion.y *= -1;
-  tcpQuaternion.z *= -1;
-  tcpQuaternion.w *= -1;
-}
+    tcpQuaternion.x *= -1;
+    tcpQuaternion.y *= -1;
+    tcpQuaternion.z *= -1;
+    tcpQuaternion.w *= -1;
+  }
 
   return {
     position: {

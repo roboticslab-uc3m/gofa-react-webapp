@@ -29,6 +29,7 @@ app.get('/api/io/di1', (req, res) => {
 
 app.post('/api/io/do1/on', (req, res) => {
   do1 = 1;
+
   res.json({
     signal: 'Local_IO_0_DO1',
     value: do1,
@@ -38,6 +39,7 @@ app.post('/api/io/do1/on', (req, res) => {
 
 app.post('/api/io/do1/off', (req, res) => {
   do1 = 0;
+
   res.json({
     signal: 'Local_IO_0_DO1',
     value: do1,
@@ -45,50 +47,42 @@ app.post('/api/io/do1/off', (req, res) => {
   });
 });
 
-app.post('/api/motors/on', (req,res)=>{
+app.post('/api/motors/on', (req, res) => {
+  motors = true;
 
-    motors=true;
-
-    res.json({
-        motors: motors,
-        message:"Motores activados"
-    });
-
+  res.json({
+    motors: motors,
+    message: "Motores activados"
+  });
 });
 
-app.post('/api/motors/off', (req,res)=>{
+app.post('/api/motors/off', (req, res) => {
+  motors = false;
 
-    motors=false;
-
-    res.json({
-        motors: motors,
-        message:"Motores desactivados"
-    });
-
+  res.json({
+    motors: motors,
+    message: "Motores desactivados"
+  });
 });
 
 
-app.post('/api/mode/manual',(req,res)=>{
+app.post('/api/mode/manual', (req, res) => {
+  mode = "manual";
 
-    mode="manual";
-
-    res.json({
-        mode:mode,
-        message:"Modo manual activado"
-    });
-
+  res.json({
+    mode: mode,
+    message: "Modo manual activado"
+  });
 });
 
 
-app.post('/api/mode/auto',(req,res)=>{
+app.post('/api/mode/auto', (req, res) => {
+  mode = "auto";
 
-    mode="auto";
-
-    res.json({
-        mode:mode,
-        message:"Modo automático activado"
-    });
-
+  res.json({
+    mode: mode,
+    message: "Modo automático activado"
+  });
 });
 
 app.listen(PORT, () => {

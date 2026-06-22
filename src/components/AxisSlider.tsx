@@ -32,42 +32,42 @@ export function AxisSlider({
   const currentPercent =
     current !== undefined ? ((current - min) / (max - min)) * 100 : null;
 
-const pathLeft = Math.min(valuePercent, referencePercent);
-const pathWidth = Math.abs(valuePercent - referencePercent);
+  const pathLeft = Math.min(valuePercent, referencePercent);
+  const pathWidth = Math.abs(valuePercent - referencePercent);
 
 
-const intervalRef = useRef<number | null>(null);
+  const intervalRef = useRef<number | null>(null);
 
-function clampValue(nextValue: number) {
-  return Math.min(max, Math.max(min, nextValue));
-}
+  function clampValue(nextValue: number) {
+    return Math.min(max, Math.max(min, nextValue));
+  }
 
-function startContinuousChange(direction: -1 | 1) {
-  let nextValue = value;
+  function startContinuousChange(direction: -1 | 1) {
+    let nextValue = value;
 
-  nextValue = clampValue(nextValue + direction * step);
-  onChange(nextValue);
-  onStepMove?.(nextValue);
-
-  intervalRef.current = window.setInterval(() => {
     nextValue = clampValue(nextValue + direction * step);
     onChange(nextValue);
     onStepMove?.(nextValue);
-  }, 160);
-}
 
-function stopContinuousChange() {
-  if (intervalRef.current !== null) {
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
+    intervalRef.current = window.setInterval(() => {
+      nextValue = clampValue(nextValue + direction * step);
+      onChange(nextValue);
+      onStepMove?.(nextValue);
+    }, 160);
   }
-}
 
-function formatValue(number: number) {
-  return Math.abs(number) < 0.0005
-    ? '0.000'
-    : number.toFixed(3);
-}
+  function stopContinuousChange() {
+    if (intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }
+
+  function formatValue(number: number) {
+    return Math.abs(number) < 0.0005
+      ? '0.000'
+      : number.toFixed(3);
+  }
 
   return (
     <div className="axis-slider">
@@ -82,68 +82,68 @@ function formatValue(number: number) {
       </div>
 
       <div className="slider-row">
-  <button
-    type="button"
-    className="slider-step-button"
-    onMouseDown={() => startContinuousChange(-1)}
-    onMouseUp={stopContinuousChange}
-    onMouseLeave={stopContinuousChange}
-  >
-    ◀
-  </button>
+        <button
+          type="button"
+          className="slider-step-button"
+          onMouseDown={() => startContinuousChange(-1)}
+          onMouseUp={stopContinuousChange}
+          onMouseLeave={stopContinuousChange}
+        >
+          ◀
+        </button>
 
-    <div className="slider-wrapper">
-      <div className="slider-track" />
+        <div className="slider-wrapper">
+          <div className="slider-track" />
 
-      <div
-        className="slider-path"
-        style={{
-          left: `${pathLeft}%`,
-          width: `${pathWidth}%`,
-        }}
-      />
+          <div
+            className="slider-path"
+            style={{
+              left: `${pathLeft}%`,
+              width: `${pathWidth}%`,
+            }}
+          />
 
-      {showCurrent && currentPercent !== null && (
-        <div
-          className="current-marker"
-          style={{ left: `${currentPercent}%` }}
-          title="Posición real actual"
-        />
-      )}
+          {showCurrent && currentPercent !== null && (
+            <div
+              className="current-marker"
+              style={{ left: `${currentPercent}%` }}
+              title="Posición real actual"
+            />
+          )}
 
-      <div
-        className="reference-marker"
-        style={{ left: `${referencePercent}%` }}
-        title="Referencia inicial"
-      />
+          <div
+            className="reference-marker"
+            style={{ left: `${referencePercent}%` }}
+            title="Referencia inicial"
+          />
 
-      <div
-        className="target-marker"
-        style={{ left: `${valuePercent}%` }}
-        title="Objetivo"
-      />
+          <div
+            className="target-marker"
+            style={{ left: `${valuePercent}%` }}
+            title="Objetivo"
+          />
 
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(event) => onChange(Number(event.target.value))}
-      />
+          <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={value}
+            onChange={(event) => onChange(Number(event.target.value))}
+          />
+        </div>
+
+        <button
+          type="button"
+          className="slider-step-button"
+          onMouseDown={() => startContinuousChange(1)}
+          onMouseUp={stopContinuousChange}
+          onMouseLeave={stopContinuousChange}
+        >
+          ▶
+        </button>
+
+      </div>
     </div>
-
-    <button
-      type="button"
-      className="slider-step-button"
-      onMouseDown={() => startContinuousChange(1)}
-      onMouseUp={stopContinuousChange}
-      onMouseLeave={stopContinuousChange}
-    >
-      ▶
-    </button>
-
-    </div>
-  </div>
   );
 }

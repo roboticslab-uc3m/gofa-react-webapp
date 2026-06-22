@@ -38,9 +38,9 @@ export function CartesianControl({
   returnToReferencePose,
 }: CartesianControlProps) {
 
-    if (!targetPose || !referencePose) {
-  return <p>Esperando pose cartesiana...</p>;
-}
+  if (!targetPose || !referencePose) {
+    return <p>Esperando pose cartesiana...</p>;
+  }
   return (
     <section className="controls">
       <h2>Control cartesiano [mm]</h2>
@@ -56,16 +56,16 @@ export function CartesianControl({
         showReference={true}
         onChange={(value) => updateTargetPosition('x', mmToMeters(value))}
         onStepMove={(newValue) => {
-        const updatedPose = {
-          ...targetPose,
-          position: {
-            ...targetPose.position,
-            x: newValue / 1000,
-          },
-        };
-        updateTargetPosition('x', newValue / 1000);
-        moveRobotPoseDirect(updatedPose);
-      }}
+          const updatedPose = {
+            ...targetPose,
+            position: {
+              ...targetPose.position,
+              x: newValue / 1000,
+            },
+          };
+          updateTargetPosition('x', newValue / 1000);
+          moveRobotPoseDirect(updatedPose);
+        }}
       />
 
       <AxisSlider
@@ -79,16 +79,16 @@ export function CartesianControl({
         showReference={true}
         onChange={(value) => updateTargetPosition('y', mmToMeters(value))}
         onStepMove={(newValue) => {
-        const updatedPose = {
-          ...targetPose,
-          position: {
-            ...targetPose.position,
-            y: newValue / 1000,
-          },
-        };
-        updateTargetPosition('y', newValue / 1000);
-        moveRobotPoseDirect(updatedPose);
-      }}
+          const updatedPose = {
+            ...targetPose,
+            position: {
+              ...targetPose.position,
+              y: newValue / 1000,
+            },
+          };
+          updateTargetPosition('y', newValue / 1000);
+          moveRobotPoseDirect(updatedPose);
+        }}
       />
 
       <AxisSlider
@@ -102,16 +102,16 @@ export function CartesianControl({
         showReference={true}
         onChange={(value) => updateTargetPosition('z', mmToMeters(value))}
         onStepMove={(newValue) => {
-        const updatedPose = {
-          ...targetPose,
-          position: {
-            ...targetPose.position,
-            z: newValue / 1000,
-          },
-        };
-        updateTargetPosition('z', newValue / 1000);
-        moveRobotPoseDirect(updatedPose);
-      }}
+          const updatedPose = {
+            ...targetPose,
+            position: {
+              ...targetPose.position,
+              z: newValue / 1000,
+            },
+          };
+          updateTargetPosition('z', newValue / 1000);
+          moveRobotPoseDirect(updatedPose);
+        }}
       />
 
       <h3>Orientación cartesiana relativa a la posición [°]</h3>
@@ -119,7 +119,7 @@ export function CartesianControl({
       <AxisSlider
         label="Rx"
         value={rx}
-       // current={currentRx}
+        // current={currentRx}
         reference={0}
         min={-10}
         max={10}

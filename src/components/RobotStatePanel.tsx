@@ -11,7 +11,7 @@ export function RobotStatePanel({
   values,
 }: RobotStatePanelProps) {
 
-const isJointPanel = values.some(v => v.label === 'J1');
+  const isJointPanel = values.some(v => v.label === 'J1');
 
   return (
     <section className="robot-state">

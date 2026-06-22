@@ -211,9 +211,9 @@ button:hover {
     gap: 20px;
   }
 
-  .card > h1,
-  .card > p,
-  .card > .message {
+  .card>h1,
+  .card>p,
+  .card>.message {
     grid-column: 1 / -1;
   }
 }
@@ -347,8 +347,8 @@ button:hover {
   font-weight: 700;
 
   color: #93c5fd;
-  background: rgba(37,99,235,0.15);
-  border: 1px solid rgba(59,130,246,0.25);
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.25);
   border-radius: 6px;
   line-height: normal;
   white-space: nowrap;
@@ -435,7 +435,8 @@ button:hover {
 
 .camera-stream {
   width: 100%;
-  height: 470px; /* misma altura aproximada que Blender */
+  height: 470px;
+  /* misma altura aproximada que Blender */
 
   object-fit: cover;
   object-position: center;
@@ -494,7 +495,7 @@ button:hover {
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   color: #bdbdbd;
 }
 
@@ -579,54 +580,54 @@ body,
   }
 
   .robot-header {
-  display: flex !important;
-  flex-direction: column !important;
+    display: flex !important;
+    flex-direction: column !important;
 
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
 
-  gap: 10px;
+    gap: 10px;
 
-  margin-bottom: 14px;
-}
+    margin-bottom: 14px;
+  }
 
-.robot-header h2 {
-  position: static !important;
+  .robot-header h2 {
+    position: static !important;
 
-  transform: none !important;
+    transform: none !important;
 
-  margin: 0 !important;
+    margin: 0 !important;
 
-  text-align: center;
+    text-align: center;
 
-  font-size: 18px;
-}
+    font-size: 18px;
+  }
 
-.robot-header-buttons {
-  display: flex !important;
+  .robot-header-buttons {
+    display: flex !important;
 
-  flex-direction: row;
+    flex-direction: row;
 
-  justify-content: center;
+    justify-content: center;
 
-  align-items: center;
+    align-items: center;
 
-  gap: 12px;
+    gap: 12px;
 
-  width: 100%;
-}
+    width: 100%;
+  }
 
-.robot-header-buttons button,
-.header-home-button,
-.tool-toggle {
-  font-size: 12px !important;
+  .robot-header-buttons button,
+  .header-home-button,
+  .tool-toggle {
+    font-size: 12px !important;
 
-  padding: 7px 12px !important;
+    padding: 7px 12px !important;
 
-  white-space: nowrap;
+    white-space: nowrap;
 
-  margin: 0 !important;
-}
+    margin: 0 !important;
+  }
 
   .robot-column {
     margin-top: 0 !important;
@@ -650,63 +651,63 @@ body,
   }
 
   .robot-status-message {
-  position: absolute;
-  left: 50%;
-  bottom: 14px;
-  transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
 
-  max-width: 90%;
-  width: fit-content;
+    max-width: 90%;
+    width: fit-content;
 
-  padding: 4px 10px;
+    padding: 4px 10px;
 
-  font-size: 0.72rem;
-  font-weight: 700;
+    font-size: 0.72rem;
+    font-weight: 700;
 
-  color: #93c5fd;
-  background: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  border-radius: 6px;
+    color: #93c5fd;
+    background: rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 6px;
 
-  line-height: 1.15;
-  text-align: center;
+    line-height: 1.15;
+    text-align: center;
 
-  white-space: normal;
-  overflow-wrap: break-word;
-}
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
 
   .rws-panel {
-  width: 100%;
-  padding: 30px 40px !important;
-  gap: 30px !important;
+    width: 100%;
+    padding: 30px 40px !important;
+    gap: 30px !important;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.rws-box {
-  width: 100%;
-  max-width: 360px;
+  .rws-box {
+    width: 100%;
+    max-width: 360px;
 
-  padding: 42px 28px !important;
-  border-radius: 16px;
-}
+    padding: 42px 28px !important;
+    border-radius: 16px;
+  }
 
-.rws-box button {
-  width: 200px !important;
-  height: 60px !important;
+  .rws-box button {
+    width: 200px !important;
+    height: 60px !important;
 
-  margin: 0 auto !important;
+    margin: 0 auto !important;
 
-  display: block;
+    display: block;
 
-  font-size: 22px !important;
-}
+    font-size: 22px !important;
+  }
 
-.rws-box button + button {
-  margin-top: 18px !important;
-}
+  .rws-box button+button {
+    margin-top: 18px !important;
+  }
 
   .controls {
     margin-top: 0;
@@ -722,46 +723,46 @@ body,
   }
 
   .title-container h1 {
-  font-size: 20px !important;
-}
+    font-size: 20px !important;
+  }
 
-.title-logo {
-  height: 28px !important;
-}
+  .title-logo {
+    height: 28px !important;
+  }
 
-.title-container {
-  gap: 8px !important;
-}
+  .title-container {
+    gap: 8px !important;
+  }
 
-.tabs {
-  gap: 12px !important;
-}
+  .tabs {
+    gap: 12px !important;
+  }
 
-.tab {
-  padding: 12px 18px !important;
-}
+  .tab {
+    padding: 12px 18px !important;
+  }
 
-.controls > button {
-  height: 22px !important;
-  min-height: 22px !important;
+  .controls>button {
+    height: 22px !important;
+    min-height: 22px !important;
 
-  padding: 2px 10px !important;
+    padding: 2px 10px !important;
 
-  font-size: 12px !important;
-  line-height: 1;
-}
+    font-size: 12px !important;
+    line-height: 1;
+  }
 
-.controls > button {
-  margin-right: 10px !important;
-}
+  .controls>button {
+    margin-right: 10px !important;
+  }
 
-.controls > button:last-child {
-  margin-right: 0 !important;
-}
+  .controls>button:last-child {
+    margin-right: 0 !important;
+  }
 
-.robot-header-buttons {
-  gap: 2px !important;
-}
+  .robot-header-buttons {
+    gap: 2px !important;
+  }
 }
 
 @media (max-width: 700px) and (orientation: portrait) {
@@ -809,27 +810,27 @@ body,
   }
 
   .robot-status-message {
-  position: absolute;
-  left: 50%;
-  bottom: 8px;
-  transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
 
-  width: calc(100% - 16px) !important;
-  max-width: calc(100% - 16px) !important;
+    width: calc(100% - 16px) !important;
+    max-width: calc(100% - 16px) !important;
 
-  padding: 3px 6px;
+    padding: 3px 6px;
 
-  font-size: 7.5px;
-  line-height: 1.1;
+    font-size: 7.5px;
+    line-height: 1.1;
 
-  white-space: normal !important;
-  overflow-wrap: break-word;
-  word-break: normal;
+    white-space: normal !important;
+    overflow-wrap: break-word;
+    word-break: normal;
 
-  text-align: center;
+    text-align: center;
 
-  overflow: hidden;
-}
+    overflow: hidden;
+  }
 
   .robot-header {
     display: flex;
@@ -854,25 +855,25 @@ body,
   .robot-header-buttons button,
   .header-home-button,
 
-.tool-toggle {
-  font-size: 9px !important;
-  padding: 3px 8px !important;
-  border-radius: 8px;
-  margin: 0 !important;
-  white-space: nowrap;
-}
+  .tool-toggle {
+    font-size: 9px !important;
+    padding: 3px 8px !important;
+    border-radius: 8px;
+    margin: 0 !important;
+    white-space: nowrap;
+  }
 
-.tool-toggle:not(.active) {
-  background: rgba(255,255,255,0.12) !important;
-  color: #bdbdbd !important;
-}
+  .tool-toggle:not(.active) {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #bdbdbd !important;
+  }
 
-.tool-toggle.active {
-  width: auto !important;
+  .tool-toggle.active {
+    width: auto !important;
 
-  background: #2563eb !important;
-  color: white !important;
-}
+    background: #2563eb !important;
+    color: white !important;
+  }
 
   .robot-viewer-box {
     height: 150px !important;
@@ -897,16 +898,16 @@ body,
   }
 
   .robot-status-grid {
-  margin-top: 2px;
-}
+    margin-top: 2px;
+  }
 
-.robot-viewer-placeholder {
-  padding-bottom: 0 !important;
-}
+  .robot-viewer-placeholder {
+    padding-bottom: 0 !important;
+  }
 
-.robot-column {
-  margin-bottom: 1px;
-}
+  .robot-column {
+    margin-bottom: 1px;
+  }
 
   .robot-status-grid .robot-state {
     height: 95px;
@@ -938,15 +939,15 @@ body,
   }
 
   .robot-state-joints {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 10px;
-  row-gap: 0px;
-}
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 0px;
+  }
 
-.robot-state-joints .robot-state-line {
-  margin: 0;
-}
+  .robot-state-joints .robot-state-line {
+    margin: 0;
+  }
 
   .tabs {
     margin-top: 2px;
@@ -1006,8 +1007,8 @@ body,
   }
 
   .slider-row {
-  margin-top: -6px !important;
-}
+    margin-top: -6px !important;
+  }
 
   .slider-step-button {
     width: 22px;
@@ -1033,7 +1034,7 @@ body,
     height: 19px;
   }
 
-  .controls > button {
+  .controls>button {
     position: absolute;
     bottom: 12px;
 
@@ -1048,72 +1049,73 @@ body,
     border-radius: 12px;
   }
 
-  .controls > button:nth-of-type(1) {
+  .controls>button:nth-of-type(1) {
     left: 10px;
   }
 
-  .controls > button:nth-of-type(2) {
+  .controls>button:nth-of-type(2) {
     left: calc(10px + ((100% - 32px) / 3) + 6px);
   }
 
-  .controls > button:nth-of-type(3) {
+  .controls>button:nth-of-type(3) {
     right: 10px;
   }
 
   .rws-panel {
-  padding: 10px !important;
-  gap: 8px !important;
-}
+    padding: 10px !important;
+    gap: 8px !important;
+  }
 
-.rws-box {
-  padding: 14px 10px !important;
-  border-radius: 14px;
-}
+  .rws-box {
+    padding: 14px 10px !important;
+    border-radius: 14px;
+  }
 
-.rws-box h3 {
-  font-size: 15px !important;
-  margin-bottom: 10px !important;
-}
+  .rws-box h3 {
+    font-size: 15px !important;
+    margin-bottom: 10px !important;
+  }
 
-.rws-box button {
-  width: 100% !important;
-  max-width: 170px;
-  height: 42px !important;
-  margin: 4px auto !important;
-  display: block;
-  font-size: 13px !important;
-  padding: 0 !important;
-  border-radius: 10px;
-}
+  .rws-box button {
+    width: 100% !important;
+    max-width: 170px;
+    height: 42px !important;
+    margin: 4px auto !important;
+    display: block;
+    font-size: 13px !important;
+    padding: 0 !important;
+    border-radius: 10px;
+  }
 
-.rws-box .button-group,
-.rws-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
+  .rws-box .button-group,
+  .rws-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
 
-.camera-viewer {
-  height: 199px !important;
-  min-height: 199px !important;
-  max-height: 199px !important;
-}
+  .camera-viewer {
+    height: 199px !important;
+    min-height: 199px !important;
+    max-height: 199px !important;
+  }
 
-.mini-robot-viewer {
-  width: 92px;
-  height: 68px;
+  .mini-robot-viewer {
+    width: 92px;
+    height: 68px;
 
-  left: 8px;
+    left: 8px;
 
-  bottom: 8px !important;
+    bottom: 8px !important;
 
-  border-radius: 10px;
-}
+    border-radius: 10px;
+  }
 
 }
 
 @media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
+
   html,
   body,
   #root {
@@ -1144,7 +1146,7 @@ body,
     transform: none !important;
   }
 
-    .robot-header {
+  .robot-header {
     margin-bottom: 16px !important;
   }
 
@@ -1159,7 +1161,7 @@ body,
     align-items: start;
   }
 
-    .robot-viewer-box {
+  .robot-viewer-box {
     margin-top: 12px;
     overflow: hidden;
   }
@@ -1170,7 +1172,7 @@ body,
     display: block;
   }
 
-    .tabs {
+  .tabs {
     margin-top: 14px !important;
     margin-bottom: 14px !important;
     gap: 10px !important;
@@ -1185,7 +1187,7 @@ body,
     margin-top: 0;
   }
 
-    .camera-viewer {
+  .camera-viewer {
     height: 390px !important;
     min-height: 390px !important;
     max-height: 390px !important;
@@ -1209,33 +1211,33 @@ body,
   }
 
   .mini-robot-viewer {
-  width: 150px;
-  height: 105px;
+    width: 150px;
+    height: 105px;
 
-  left: 12px;
+    left: 12px;
 
-  bottom: 42px !important;
+    bottom: 42px !important;
 
-  border-radius: 12px;
-}
+    border-radius: 12px;
+  }
 
-.tool-toggle {
-  font-size: 10px !important;
-  padding: 5px 8px !important;
-  margin: 0 !important;
-  white-space: nowrap;
-}
+  .tool-toggle {
+    font-size: 10px !important;
+    padding: 5px 8px !important;
+    margin: 0 !important;
+    white-space: nowrap;
+  }
 
-.tool-toggle:not(.active) {
-  background: rgba(255,255,255,0.12) !important;
-  color: #bdbdbd !important;
-}
+  .tool-toggle:not(.active) {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #bdbdbd !important;
+  }
 
-.tool-toggle.active {
-  width: auto !important;
+  .tool-toggle.active {
+    width: auto !important;
 
-  background: #2563eb !important;
-  color: white !important;
-}
+    background: #2563eb !important;
+    color: white !important;
+  }
 
 }
