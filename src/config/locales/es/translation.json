@@ -1,0 +1,53 @@
+{
+  "logger": {
+    "awaiting_state": "Esperando estado real del robot...",
+    "cartesian_command_success": "Comando cartesiano enviado. Rotación relativa: Rx={{rx}}°, Ry={{ry}}°, Rz={{rz}}°.",
+    "cartesian_command_out_of_limits": "Movimiento bloqueado: la pose solicitada queda fuera del rango cartesiano permitido de ±{{limit}} mm.",
+    "joint_command_converted": "Comando articular convertido mediante cinemática directa y enviado como pose cartesiana.",
+    "returning_to_reference": "Volviendo a la referencia actual.",
+    "reference_updated_from_current_pose": "Referencia actualizada desde la posición actual del robot.",
+    "cartesian_command_direct": "Comando cartesiano enviado directamente desde botones laterales.",
+    "joint_command_direct": "Comando articular enviado directamente desde botones laterales.",
+    "returning_to_home": "Volviendo a Home: [0°, 0°, 0°, 0°, 30°, 0°]."
+  },
+  "header": {
+      "visualizer_title": "Visualizador 3D",
+      "camera_title": "Cámara externa",
+      "visualizer_button": "Volver a 3D",
+      "camera_button": "Activar cámara",
+      "home_button": "Volver a Home",
+      "current_pose": "Posición real [mm]",
+      "current_joints": "Estado articular [°]",
+      "cartesian": "Cartesiano",
+      "joint": "Articular",
+      "rws": "RWS",
+      "manual": "Manual",
+      "auto": "Auto",
+      "motors_on": "Motores ON",
+      "motors_off": "Motores OFF"
+  },
+  "cartesian_control": {
+    "awaiting_pose": "Esperando pose cartesiana...",
+    "translation_title": "Traslación [mm]",
+    "x_label": "Eje X",
+    "y_label": "Eje Y",
+    "z_label": "Eje Z",
+    "orientation_title": "Rotación en notación eje-ángulo escalado [°]",
+    "rx_label": "Rx",
+    "ry_label": "Ry",
+    "rz_label": "Rz",
+    "send_button": "Mover cartesiano",
+    "return_button": "Volver a referencia",
+    "update_reference": "Usar pose actual como referencia"
+  },
+  "joint_control": {
+    "title": "Configuración articular [°]",
+    "send_button": "Mover articulaciones",
+    "return_button": "Volver a referencia",
+    "update_reference": "Usar estado actual como referencia"
+  },
+  "slider": {
+    "reference_label": "Referencia",
+    "goal_label": "Objetivo"
+  }
+}

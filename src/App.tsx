@@ -4,6 +4,7 @@ import type { Pose } from './services/rosApi';
 import GoFa3D from "./components/robot_3d/GoFa_3d";
 import { Canvas } from "@react-three/fiber";
 import { GizmoHelper, GizmoViewport } from "@react-three/drei";
+import { useTranslation } from 'react-i18next';
 
 import {
   publishPoseCommand,
@@ -40,6 +41,9 @@ const HOME_JOINTS = [
 ];
 
 function App() {
+  const { t, i18n } = useTranslation();
+
+  const [activeLanguage, setActiveLanguage] = useState(i18n.language);
   const [activePanel, setActivePanel] = useState<'cartesian' | 'joint' | 'rws'>('cartesian');
   const [currentPose, setCurrentPose] = useState<Pose | null>(null);
   const [referencePose, setReferencePose] = useState<Pose | null>(null);
@@ -72,17 +76,22 @@ function App() {
   };
 
   const [message, setMessage] = useState(
-    'Esperando estado real del robot...'
+    t('logger.awaiting_state')
   );
 
   const handleRwsCommand = async (command: () => Promise<any>) => {
     try {
       const result = await command();
-      console.log("Respuesta RWS:", result);
+      console.log("RWS response:", result);
     } catch (error) {
-      console.error("Error ejecutando comando RWS:", error);
+      console.error("Error executing RWS command:", error);
     }
   };
+
+  const handleLanguageChange = (language: string) => {
+    setActiveLanguage(language);
+    i18n.changeLanguage(language);
+  }
 
   useEffect(() => {
     const unsubscribe = subscribeToPose((pose) => {
@@ -189,7 +198,7 @@ function App() {
     publishMoveL(nextPose);
 
     setMessage(
-      `Comando cartesiano enviado. Rotación relativa: Rx=${rx}°, Ry=${ry}°, Rz=${rz}°.`
+      t('logger.cartesian_command_success', { rx, ry, rz })
     );
   }
 
@@ -225,7 +234,7 @@ function App() {
       setRz(0);
 
       setMessage(
-        'Movimiento bloqueado: la pose solicitada queda fuera del rango cartesiano permitido de ±200 mm.'
+        t('logger.cartesian_command_out_of_limits', { limit: CARTESIAN_LIMIT_M * 1000 })
       );
 
       return;
@@ -234,9 +243,7 @@ function App() {
     setTargetPose(poseFromFk);
     publishMoveL(poseFromFk);
 
-    setMessage(
-      'Comando articular convertido mediante cinemática directa y enviado como pose cartesiana.'
-    );
+    setMessage(t('logger.joint_command_converted'));
   }
 
   function returnToReferencePose() {
@@ -250,7 +257,7 @@ function App() {
     setRy(0);
     setRz(0);
 
-    setMessage("Volviendo a la referencia actual.");
+    setMessage(t('logger.returning_to_reference'));
   }
 
   function returnToReferenceJoints() {
@@ -274,7 +281,7 @@ function App() {
     setRy(0);
     setRz(0);
 
-    setMessage("Volviendo a la referencia actual.");
+    setMessage(t('logger.returning_to_reference'));
   }
 
   function captureCurrentPoseAsReference() {
@@ -296,9 +303,7 @@ function App() {
     setRy(0);
     setRz(0);
 
-    setMessage(
-      "Referencia actualizada desde la posición actual del robot."
-    );
+    setMessage(t('logger.reference_updated_from_current_pose'));
   }
 
   function captureCurrentJointsAsReference() {
@@ -316,9 +321,7 @@ function App() {
       setRz(0);
     }
 
-    setMessage(
-      'Referencia actualizada desde la posición actual del robot.'
-    );
+    setMessage(t('logger.reference_updated_from_current_pose'));
   }
 
   function moveRobotPoseDirect(
@@ -344,9 +347,7 @@ function App() {
 
     publishPoseCommand(nextPose);
 
-    setMessage(
-      `Comando cartesiano enviado directamente desde botones laterales`
-    );
+    setMessage(t('logger.cartesian_command_direct'));
   }
 
   function moveRobotJointsDirect(joints: number[]) {
@@ -363,7 +364,7 @@ function App() {
 
     if (!isPoseInsideCartesianLimits(poseFromFk, referencePose)) {
       setMessage(
-        'Movimiento bloqueado: la pose calculada por FK queda fuera del rango cartesiano permitido de ±200 mm.'
+        t('logger.cartesian_command_out_of_limits', { limit: CARTESIAN_LIMIT_M * 1000 })
       );
 
       return;
@@ -373,9 +374,7 @@ function App() {
     setTargetPose(poseFromFk);
     publishPoseCommand(poseFromFk);
 
-    setMessage(
-      'Comando articular enviado directamente desde botones laterales.'
-    );
+    setMessage(t('logger.joint_command_direct'));
   }
 
   function moveToHome() {
@@ -397,9 +396,7 @@ function App() {
 
     publishMoveL(homePose);
 
-    setMessage(
-      'Volviendo a Home: [0°, 0°, 0°, 0°, 30°, 0°].'
-    );
+    setMessage(t('logger.returning_to_home'));
   };
 
   return (
@@ -415,7 +412,7 @@ function App() {
             <section className="controls robot-viewer-placeholder">
               <div className="robot-header">
                 <h2>
-                  {cameraActive ? 'Livestream' : 'Representación 3D GoFa'}
+                  {cameraActive ? t('header.camera_title') : t('header.visualizer_title')}
                 </h2>
                 <div className="robot-header-buttons">
                   <button
@@ -429,14 +426,20 @@ function App() {
                     onClick={() => setCameraActive(!cameraActive)}
                     className="header-home-button"
                   >
-                    {cameraActive ? 'Volver a 3D' : 'Activar cámara'}
+                    {cameraActive ? t('header.visualizer_button') : t('header.camera_button')}
                   </button>
                   <button
                     type="button"
                     onClick={moveToHome}
                     className="header-home-button"
                   >
-                    Volver a Home
+                    {t('header.home_button')}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleLanguageChange(activeLanguage === 'en' ? 'es' : 'en')}
+                  >
+                    {activeLanguage.toUpperCase()}
                   </button>
                 </div>
               </div>
@@ -484,7 +487,7 @@ function App() {
                 <>
                   <div className="robot-status-grid">
                     <RobotStatePanel
-                      title="Posición real [mm]"
+                      title={t('header.current_pose')}
                       values={[
                         {
                           label: 'X',
@@ -501,13 +504,12 @@ function App() {
                       ]}
                     />
                     <RobotStatePanel
-                      title="Articulaciones reales [°]"
+                      title={t('header.current_joints')}
                       values={currentJoints.map((joint, index) => ({
                         label: `J${index + 1}`,
                         value: joint * 180 / Math.PI,
                       }))}
                     />
-
                   </div>
                 </>
               )}
@@ -519,19 +521,19 @@ function App() {
                 className={activePanel === 'cartesian' ? 'tab active' : 'tab'}
                 onClick={() => setActivePanel('cartesian')}
               >
-                Cartesianas
+                {t('header.cartesian')}
               </button>
               <button
                 className={activePanel === 'joint' ? 'tab active' : 'tab'}
                 onClick={() => setActivePanel('joint')}
               >
-                Articulares
+                {t('header.joint')}
               </button>
               <button
                 className={activePanel === "rws" ? "active" : ""}
                 onClick={() => setActivePanel("rws")}
               >
-                RWS
+                {t('header.rws')}
               </button>
             </div>
             {activePanel === 'cartesian' &&
@@ -572,18 +574,18 @@ function App() {
               <div className="rws-panel">
                 <div className="rws-box">
                   <button onClick={() => handleRwsCommand(setManualMode)}>
-                    Manual
+                    {t('header.manual')}
                   </button>
                   <button onClick={() => handleRwsCommand(setAutoMode)}>
-                    Auto
+                    {t('header.auto')}
                   </button>
                 </div>
                 <div className="rws-box">
                   <button onClick={() => handleRwsCommand(motorsOn)}>
-                    Motors ON
+                    {t('header.motors_on')}
                   </button>
                   <button onClick={() => handleRwsCommand(motorsOff)}>
-                    Motors OFF
+                    {t('header.motors_off')}
                   </button>
                 </div>
               </div>

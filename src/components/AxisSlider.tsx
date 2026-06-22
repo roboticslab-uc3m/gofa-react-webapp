@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type AxisSliderProps = {
   label: string;
@@ -27,6 +28,8 @@ export function AxisSlider({
   showReference = true,
   showCurrent = true,
 }: AxisSliderProps) {
+  const { t } = useTranslation();
+
   const valuePercent = ((value - min) / (max - min)) * 100;
   const referencePercent = ((reference - min) / (max - min)) * 100;
   const currentPercent =
@@ -75,8 +78,8 @@ export function AxisSlider({
         <strong>{label}</strong>
         <span>
           {/* {showCurrent && current !== undefined && (<>Actual: {current.toFixed(3)} | </>)} */}
-          {showReference && <>Referencia: {formatValue(reference)} | </>}
-          {showReference && <>Objetivo: {formatValue(value)} | </>}
+          {showReference && <>{t('slider.reference_label')}: {formatValue(reference)} | </>}
+          {showReference && <>{t('slider.goal_label')}: {formatValue(value)} | </>}
           Δ: {formatValue(value - reference)}
         </span>
       </div>

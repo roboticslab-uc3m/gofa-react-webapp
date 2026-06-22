@@ -1,4 +1,5 @@
 import { AxisSlider } from './AxisSlider';
+import { useTranslation } from 'react-i18next';
 import type { Pose } from '../services/rosApi';
 
 const metersToMm = (meters: number) => meters * 1000;
@@ -37,16 +38,18 @@ export function CartesianControl({
   moveRobotPoseDirect,
   returnToReferencePose,
 }: CartesianControlProps) {
+  const { t } = useTranslation();
 
   if (!targetPose || !referencePose) {
-    return <p>Esperando pose cartesiana...</p>;
+    return <p>{t('cartesian_control.awaiting_pose')}</p>;
   }
+
   return (
     <section className="controls">
-      <h2>Control cartesiano [mm]</h2>
+      <h2>{t('cartesian_control.translation_title')}</h2>
 
       <AxisSlider
-        label="Eje X"
+        label={t('cartesian_control.x_label')}
         value={metersToMm(targetPose.position.x)}
         current={metersToMm(currentPose.position.x)}
         reference={metersToMm(referencePose.position.x)}
@@ -69,7 +72,7 @@ export function CartesianControl({
       />
 
       <AxisSlider
-        label="Eje Y"
+        label={t('cartesian_control.y_label')}
         value={metersToMm(targetPose.position.y)}
         current={metersToMm(currentPose.position.y)}
         reference={metersToMm(referencePose.position.y)}
@@ -92,7 +95,7 @@ export function CartesianControl({
       />
 
       <AxisSlider
-        label="Eje Z"
+        label={t('cartesian_control.z_label')}
         value={metersToMm(targetPose.position.z)}
         current={metersToMm(currentPose.position.z)}
         reference={metersToMm(referencePose.position.z)}
@@ -114,10 +117,10 @@ export function CartesianControl({
         }}
       />
 
-      <h3>Orientación cartesiana relativa a la posición [°]</h3>
+      <h2>{t('cartesian_control.orientation_title')}</h2>
 
       <AxisSlider
-        label="Rx"
+        label={t('cartesian_control.rx_label')}
         value={rx}
         // current={currentRx}
         reference={0}
@@ -134,7 +137,7 @@ export function CartesianControl({
       />
 
       <AxisSlider
-        label="Ry"
+        label={t('cartesian_control.ry_label')}
         value={ry}
         //current={currentRy}
         reference={0}
@@ -151,7 +154,7 @@ export function CartesianControl({
       />
 
       <AxisSlider
-        label="Rz"
+        label={t('cartesian_control.rz_label')}
         value={rz}
         //current={currentRz}
         reference={0}
@@ -167,9 +170,9 @@ export function CartesianControl({
         }}
       />
 
-      <button onClick={moveRobotPose}>Mover cartesiano</button>
-      <button onClick={returnToReferencePose}>Volver a referencia</button>
-      <button onClick={captureCurrentPoseAsReference}>Usar posición actual como referencia</button>
+      <button onClick={moveRobotPose}>{t('cartesian_control.send_button')}</button>
+      <button onClick={returnToReferencePose}>{t('cartesian_control.return_button')}</button>
+      <button onClick={captureCurrentPoseAsReference}>{t('cartesian_control.update_reference')}</button>
     </section>
   );
 }

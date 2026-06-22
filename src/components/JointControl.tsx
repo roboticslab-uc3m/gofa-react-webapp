@@ -1,5 +1,6 @@
 import { AxisSlider } from './AxisSlider';
 // import { RobotStatePanel } from './RobotStatePanel';
+import { useTranslation } from 'react-i18next';
 
 const jointLimitsDeg = [
   { min: -180, max: 180 },
@@ -35,9 +36,11 @@ export function JointControl({
   captureCurrentJointsAsReference,
   moveRobotJointsDirect,
 }: JointControlProps) {
+  const { t } = useTranslation();
+
   return (
     <section className="controls">
-      <h2>Control articular</h2>
+      <h2>{t('joint_control.title')}</h2>
 
       {/* <RobotStatePanel
         title="Referencia articular [°]"
@@ -74,9 +77,9 @@ export function JointControl({
         );
       })}
 
-      <button onClick={moveRobotJoints}>Mover articulaciones</button>
-      <button onClick={returnToReferenceJoints}>Volver a referencia</button>
-      <button onClick={captureCurrentJointsAsReference}>Usar posición actual como referencia</button>
+      <button onClick={moveRobotJoints}>{t('joint_control.send_button')}</button>
+      <button onClick={returnToReferenceJoints}>{t('joint_control.return_button')}</button>
+      <button onClick={captureCurrentJointsAsReference}>{t('joint_control.update_reference')}</button>
 
     </section>
   );

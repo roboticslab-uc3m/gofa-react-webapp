@@ -1,0 +1,53 @@
+{
+  "logger": {
+    "awaiting_state": "Waiting for robot state...",
+    "cartesian_command_success": "Cartesian command sent. Relative rotation: Rx={{rx}}°, Ry={{ry}}°, Rz={{rz}}°.",
+    "cartesian_command_out_of_limits": "Movement blocked: the requested pose is outside the allowed Cartesian range of ±{{limit}} mm.",
+    "joint_command_converted": "Joint command converted via forward kinematics and sent as a Cartesian pose.",
+    "returning_to_reference": "Returning to the current reference.",
+    "reference_updated_from_current_pose": "Reference updated from the robot's current pose.",
+    "cartesian_command_direct": "Cartesian command sent directly from side buttons.",
+    "joint_command_direct": "Joint command sent directly from side buttons.",
+    "returning_to_home": "Returning to Home: [0°, 0°, 0°, 0°, 30°, 0°]."
+  },
+  "header": {
+      "visualizer_title": "3D Visualizer",
+      "camera_title": "External Camera",
+      "visualizer_button": "Back to 3D",
+      "camera_button": "Activate Camera",
+      "home_button": "Return to Home",
+      "current_pose": "Current pose [mm]",
+      "current_joints": "Joint state [°]",
+      "cartesian": "Cartesian",
+      "joint": "Joint",
+      "rws": "RWS",
+      "manual": "Manual",
+      "auto": "Auto",
+      "motors_on": "Motors ON",
+      "motors_off": "Motors OFF"
+  },
+  "cartesian_control": {
+    "awaiting_pose": "Waiting for Cartesian pose...",
+    "translation_title": "Translation [mm]",
+    "x_label": "X Axis",
+    "y_label": "Y Axis",
+    "z_label": "Z Axis",
+    "orientation_title": "Rotation in scaled axis-angle notation [°]",
+    "rx_label": "Rx",
+    "ry_label": "Ry",
+    "rz_label": "Rz",
+    "send_button": "Move Cartesian",
+    "return_button": "Back to reference",
+    "update_reference": "Use current pose as reference"
+  },
+  "joint_control": {
+    "title": "Joint configuration [°]",
+    "send_button": "Move joints",
+    "return_button": "Back to reference",
+    "update_reference": "Use current state as reference"
+  },
+  "slider": {
+    "reference_label": "Reference",
+    "goal_label": "Goal"
+  }
+}
